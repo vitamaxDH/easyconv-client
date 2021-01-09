@@ -1,7 +1,16 @@
-# Getting Started with Create React App
+# EASY CONV FRONT-END REPO
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is an online application which ables you to convert different types of files
+to a PDF file and vice versa.
 
+📃◀️▶️️📑
+
+The list of supported formats. (ex)
+- docx
+- xlsx
+- hwp
+- pdf
+- ... will be updated
 ## Available Scripts
 
 In the project directory, you can run:
