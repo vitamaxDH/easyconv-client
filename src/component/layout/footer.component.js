@@ -19,7 +19,6 @@ function FooterComponent (){
                             <li><a href="#">hwp</a></li>
                             <li><a href="#">docx</a></li>
                             <li><a href="#">xlsx</a></li>
-                            <li><a href="#">cvs</a></li>
                         </ul>
                     </div>
                     <div className="col-xs-6 col-md-3">
@@ -28,8 +27,6 @@ function FooterComponent (){
                             <li><a href="#">About Us</a></li>
                             <li><a href="#">Contact Us</a></li>
                             <li><a href="#">Contribute</a></li>
-                            <li><a href="#">Privacy Policy</a></li>
-                            <li><a href="#">Sitemap</a></li>
                         </ul>
                     </div>
                 </div>
