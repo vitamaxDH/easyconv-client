@@ -6,7 +6,7 @@ class UploadFilesService {
 
         formData.append("multipartFile", file);
 
-        return http.post("/api/convert/upload", formData, {
+        return http.post("/api/convert", formData, {
             headers: {
                 "Content-Type": "multipart/form-data",
             },
