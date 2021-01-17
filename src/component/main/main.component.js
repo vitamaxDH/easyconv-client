@@ -3,6 +3,7 @@ import axios from "axios";
 import {Button, Col, Container, Row} from "react-bootstrap";
 import {useDropzone} from 'react-dropzone';
 import UploadService from '../../services/upload-files.service'
+const fileDownload = require('js-file-download')
 
 const baseStyle = {
     flex: 1,
@@ -66,12 +67,20 @@ const MainComponent = (props) => {
     }, []);
 
     const sendFiles = () => {
+        if (acceptedFiles.length === 0){
+            alert('파일을 선택해주세요.')
+            return;
+        }
         console.log (acceptedFiles)
         UploadService.upload(acceptedFiles[0], 0)
             .then(res => {
-                console.log(res)
+                fileDownload(res, 'down.pdf')
             })
 
+    }
+
+    const clear = () => {
+        acceptedFiles.pop();
     }
 
     return (
@@ -89,9 +98,10 @@ const MainComponent = (props) => {
                             <ul>{files}</ul>
                         </aside>
                     </section>
-                    <Button className="mt-3" onClick={sendFiles}>
+                    <Button className="mt-3 mr-5" onClick={sendFiles}>
                         변환하기
                     </Button>
+                    <Button className="mt-3 mr-5" onClick={clear}>Clear</Button>
                 </Col>
             </Row>
         </Container>
