@@ -14,9 +14,14 @@ class UploadFilesService {
         });
     }
 
-    getFiles() {
-        return http.get("/files");
+    getFiles(fileId) {
+        return http.get(`/api/file/${fileId}`, {
+            headers: {
+                'responseType': 'arraybuffer',
+            }
+        });
     }
+
 }
 
 export default new UploadFilesService();
