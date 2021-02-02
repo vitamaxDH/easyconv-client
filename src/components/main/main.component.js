@@ -3,6 +3,8 @@ import axios from "axios";
 import {Button, Col, Container, Row} from "react-bootstrap";
 import {useDropzone} from 'react-dropzone';
 import UploadService from '../../services/upload-files.service'
+import OkModal from "../modal/ok.modal.component";
+import {Modal} from '../../script/core/constant'
 import './main.component.css'
 
 const fileDownload = require('js-file-download')
@@ -37,7 +39,11 @@ const rejectStyle = {
 };
 
 const MainComponent = (props) => {
-    const [ greeting, setGreeting ] = useState("hasn't answered yet");
+    const [ greeting, setGreeting ] = useState('Server is off');
+    const [ serverStatus, setServerStatus ] = useState(false);
+    const [ modalShow, setModalShow ] = useState(false);
+    const [ modalTitle, setModalTitle ] = useState('');
+    const [ modalBody, setModalBody ] = useState('');
     const {
         acceptedFiles,
         getRootProps,
@@ -66,12 +72,20 @@ const MainComponent = (props) => {
 
     useEffect(() => {
         axios.get('/api/index')
-             .then(({data}) => setGreeting(data));
+             .then(({data}) => {
+                 setGreeting(data);
+                 setServerStatus(true);
+             });
     }, []);
 
     const sendFiles = () => {
+        if (!serverStatus){
+            setModalContent(Modal.SERVER_ERROR)
+            return ;
+        }
+
         if (acceptedFiles.length === 0){
-            alert('파일을 선택해주세요.')
+            setModalContent(Modal.FILE_WARN)
             return;
         }
         console.log (acceptedFiles)
@@ -79,6 +93,12 @@ const MainComponent = (props) => {
             .then(res => {
                 console.log(res)
             })
+    }
+
+    const setModalContent = (modalType) => {
+        setModalShow(true)
+        setModalTitle(modalType.title)
+        setModalBody(modalType.body)
     }
 
     const clear = () => {
@@ -89,7 +109,7 @@ const MainComponent = (props) => {
         <Container className="mt-3">
             <Row>
                 <Col>
-                    {greeting}
+                    <h2>{greeting}</h2>
                     <section className="mt-3" style={baseStyle}>
                         <div {...getRootProps({className: 'dropzone'})}>
                             <input {...getInputProps()} />
@@ -106,6 +126,12 @@ const MainComponent = (props) => {
                         </Button>
                         <Button className="btn btn-dark btn-lg" onClick={clear}>Clear</Button>
                     </div>
+                    <OkModal
+                        show={modalShow}
+                        onHide={() => setModalShow(false)}
+                        title={modalTitle}
+                        body={modalBody}
+                    />
                 </Col>
             </Row>
         </Container>

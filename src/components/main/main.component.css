@@ -1,5 +1,9 @@
 .btn-group {
+    margin-top: 20px;
     display: flex;
-    
+    justify-content: space-between;
+}
 
+.btn-group button {
+    width: 100px;
 }

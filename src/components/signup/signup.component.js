@@ -1,18 +1,14 @@
 import React from "react";
+import {Button, NavLink} from "react-bootstrap";
+import {Link} from "react-router-dom";
 
 const SignUp = () => {
         return (
-            <form>
+            <>
                 <h3>Register</h3>
-
                 <div className="form-group">
                     <label>First name</label>
-                    <input type="text" className="form-control" placeholder="First name" />
-                </div>
-
-                <div className="form-group">
-                    <label>Last name</label>
-                    <input type="text" className="form-control" placeholder="Last name" />
+                    <input type="text" className="form-control" placeholder="Name" />
                 </div>
 
                 <div className="form-group">
@@ -25,11 +21,11 @@ const SignUp = () => {
                     <input type="password" className="form-control" placeholder="Enter password" />
                 </div>
 
-                <button type="submit" className="btn btn-dark btn-lg btn-block">Register</button>
+                <Button className="btn btn-dark btn-lg btn-block">Register</Button>
                 <p className="forgot-password text-right">
-                    Already registered <a href="#">log in?</a>
+                    Already registered <Link to={'/sign-in'}>log in?</Link>
                 </p>
-            </form>
+            </>
         );
 
 }
