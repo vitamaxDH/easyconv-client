@@ -1,17 +1,15 @@
-import {React, Component, useState, useEffect} from 'react'
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React from 'react';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import NavComponent from "./component/layout/top-nav.component";
-import FooterComponent from "./component/layout/footer.component";
-import MainComponent from "./component/main/main.component";
+import {BrowserRouter as Router} from "react-router-dom";
+
+import TopNav from "./components/layout/top-nav.component";
 
 const App = () => {
     return (
-        <div>
-            <NavComponent/>
-            <MainComponent/>
-            {/*<FooterComponent/>*/}
-        </div>
+        <Router>
+            <TopNav/>
+        </Router>
     );
 }
 

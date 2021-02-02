@@ -1,9 +1,12 @@
-import React, {useEffect, useState, useMemo} from 'react'
+import React, {useEffect, useMemo, useState} from 'react'
 import axios from "axios";
 import {Button, Col, Container, Row} from "react-bootstrap";
 import {useDropzone} from 'react-dropzone';
 import UploadService from '../../services/upload-files.service'
+import './main.component.css'
+
 const fileDownload = require('js-file-download')
+const iconv = require('iconv-lite')
 
 const baseStyle = {
     flex: 1,
@@ -74,9 +77,8 @@ const MainComponent = (props) => {
         console.log (acceptedFiles)
         UploadService.upload(acceptedFiles[0], 0)
             .then(res => {
-                fileDownload(res, 'down.pdf')
+                console.log(res)
             })
-
     }
 
     const clear = () => {
@@ -98,10 +100,12 @@ const MainComponent = (props) => {
                             <ul>{files}</ul>
                         </aside>
                     </section>
-                    <Button className="mt-3 mr-5" onClick={sendFiles}>
-                        변환하기
-                    </Button>
-                    <Button className="mt-3 mr-5" onClick={clear}>Clear</Button>
+                    <div className="btn-group">
+                        <Button className="btn btn-dark btn-lg" onClick={sendFiles}>
+                            Convert !
+                        </Button>
+                        <Button className="btn btn-dark btn-lg" onClick={clear}>Clear</Button>
+                    </div>
                 </Col>
             </Row>
         </Container>

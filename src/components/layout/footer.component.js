@@ -1,8 +1,7 @@
 import { React } from 'react'
 import "./footer.component.css"
 
-function FooterComponent (){
-    // const [  ]
+const FooterComponent = () => {
     return (
         <footer className="site-footer">
             <div className="container">
@@ -49,7 +48,6 @@ function FooterComponent (){
             </div>
         </footer>
     )
-
 }
 
 export default FooterComponent;
