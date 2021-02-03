@@ -1,11 +1,11 @@
 import React from 'react'
-import {Navbar} from "react-bootstrap";
+import {Nav, Navbar} from "react-bootstrap";
 import logoImg from '../../resource/image/file.png';
 import {Link} from "react-router-dom";
 
 const TopNav = () => {
     return (
-        <nav className="navbar navbar-expand-lg navbar-light">
+        <Navbar collapseOnSelect expand="md" variant="light">
             <div className="container">
                 <Navbar.Brand>
                     <img
@@ -18,21 +18,22 @@ const TopNav = () => {
                     />{' '}
                     <Link className="navbar-brand" to={"/"}><h4>EasyConv</h4></Link>
                 </Navbar.Brand>
-                <div className="collapse navbar-collapse">
-                    <ul className="navbar-nav ml-auto">
-                        <li className="nav-item">
+                <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                <Navbar.Collapse id="responsive-navbar-nav">
+                    <Nav className="ml-auto">
+                        <Nav.Link>
                             <Link className="nav-link" to={"/"}>Home</Link>
-                        </li>
-                        <li className="nav-item">
+                        </Nav.Link>
+                        <Nav.Link>
                             <Link className="nav-link" to={"/sign-in"}>Sign in</Link>
-                        </li>
-                        <li className="nav-item">
+                        </Nav.Link>
+                        <Nav.Link>
                             <Link className="nav-link" to={"/sign-up"}>Sign up</Link>
-                        </li>
-                    </ul>
-                </div>
+                        </Nav.Link>
+                    </Nav>
+                </Navbar.Collapse>
             </div>
-        </nav>
+        </Navbar>
     );
 }
 export default TopNav;
