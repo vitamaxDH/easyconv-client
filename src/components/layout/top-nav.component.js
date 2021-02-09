@@ -5,6 +5,7 @@ import {Link, Route, Switch} from "react-router-dom";
 import Login from "../login/login.component";
 import SignUp from "../signup/signup.component";
 import Main from "../main/main.component";
+import Yeahn from "../yeahn/yeahn.component";
 
 const TopNav = () => {
     return (
@@ -41,6 +42,7 @@ const TopNav = () => {
                         <Route exact path='/' component={Main} />
                         <Route path="/sign-in" component={Login} />
                         <Route path="/sign-up" component={SignUp} />
+                        <Route path="/yeahn" component={Yeahn} />
                     </Switch>
                 </div>
             </div>
