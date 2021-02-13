@@ -7,9 +7,6 @@ import OkModal from "../modal/ok.modal.component";
 import {Modal} from '../../script/core/constant'
 import './main.component.css'
 
-const fileDownload = require('js-file-download')
-const iconv = require('iconv-lite')
-
 const baseStyle = {
     flex: 1,
     display: 'flex',
