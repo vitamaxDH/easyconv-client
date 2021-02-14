@@ -78,10 +78,8 @@ const MainComponent = (props) => {
     const sendFiles = () => {
         if (!serverStatus){
             setModalContent(Modal.SERVER_ERROR)
-            return ;
-        }
-
-        if (acceptedFiles.length === 0){
+            return;
+        } else if (acceptedFiles.length === 0){
             setModalContent(Modal.FILE_WARN)
             return;
         }
