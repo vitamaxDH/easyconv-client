@@ -70,17 +70,19 @@ const MainComponent = (props) => {
     useEffect(() => {
         axios.get('/api/index')
              .then(({data}) => {
-                 setGreeting(data);
-                 setServerStatus(true);
+                 if (data){
+                    setGreeting('Server is on');
+                    setServerStatus(data);
+                 }
              });
     }, []);
 
     const sendFiles = () => {
         if (!serverStatus){
-            setModalContent(Modal.SERVER_ERROR)
+            showModalContent(Modal.SERVER_ERROR)
             return;
         } else if (acceptedFiles.length === 0){
-            setModalContent(Modal.FILE_WARN)
+            showModalContent(Modal.FILE_WARN)
             return;
         }
         console.log (acceptedFiles)
@@ -90,7 +92,7 @@ const MainComponent = (props) => {
             })
     }
 
-    const setModalContent = (modalType) => {
+    const showModalContent = (modalType) => {
         setModalShow(true)
         setModalTitle(modalType.title)
         setModalBody(modalType.body)
